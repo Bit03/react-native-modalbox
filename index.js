@@ -117,17 +117,17 @@ var ModalBox = createReactClass({
     this.createPanResponder();
     this.handleOpenning(this.props);
     // Needed for IOS because the keyboard covers the screen
-    if (Platform.OS === 'ios') {
-      this.subscriptions = [
-        Keyboard.addListener('keyboardWillChangeFrame', this.onKeyboardChange),
-        Keyboard.addListener('keyboardDidHide', this.onKeyboardHide)
-      ];
-    }
+    // if (Platform.OS === 'ios') {
+    //   this.subscriptions = [
+    //     Keyboard.addListener('keyboardWillChangeFrame', this.onKeyboardChange),
+    //     Keyboard.addListener('keyboardDidHide', this.onKeyboardHide)
+    //   ];
+    // }
   },
 
-  componentWillUnmount: function() {
-    if (this.subscriptions) this.subscriptions.forEach((sub) => sub.remove());
-  },
+  // componentWillUnmount: function() {
+  //   if (this.subscriptions) this.subscriptions.forEach((sub) => sub.remove());
+  // },
 
   componentWillReceiveProps: function(props) {
      if(this.props.isOpen != props.isOpen){
@@ -148,22 +148,22 @@ var ModalBox = createReactClass({
   /*
    * The keyboard is hidden (IOS only)
    */
-  onKeyboardHide: function(evt) {
-    this.state.keyboardOffset = 0;
-  },
+  // onKeyboardHide: function(evt) {
+  //   this.state.keyboardOffset = 0;
+  // },
 
   /*
    * The keyboard frame changed, used to detect when the keyboard open, faster than keyboardDidShow (IOS only)
    */
-  onKeyboardChange: function(evt) {
-    if (!evt) return;
-    if (!this.state.isOpen) return;
-    var keyboardFrame = evt.endCoordinates;
-    var keyboardHeight = this.state.containerHeight - keyboardFrame.screenY;
+  // onKeyboardChange: function(evt) {
+  //   if (!evt) return;
+  //   if (!this.state.isOpen) return;
+  //   var keyboardFrame = evt.endCoordinates;
+  //   var keyboardHeight = this.state.containerHeight - keyboardFrame.screenY;
 
-    this.state.keyboardOffset = keyboardHeight;
-    this.animateOpen();
-  },
+  //   this.state.keyboardOffset = keyboardHeight;
+  //   this.animateOpen();
+  // },
 
   /*
    * Open animation for the backdrop, will fade in
