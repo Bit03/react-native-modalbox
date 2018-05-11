@@ -278,7 +278,8 @@ var ModalBox = createReactClass({
     this.state.animClose = Animated.timing(
       this.state.position,
       {
-        toValue: this.props.entry === 'top' ? -this.state.containerHeight : this.state.containerHeight,
+        // toValue: this.props.entry === 'top' ? -this.state.containerHeight : this.state.containerHeight,
+        toValue: -this.state.containerHeight,
         duration: this.props.animationDuration
       }
     );
@@ -474,7 +475,7 @@ var ModalBox = createReactClass({
   close: function() {
     if (this.props.isDisabled) return;
     if (!this.state.isAnimateClose && (this.state.isOpen || this.state.isAnimateOpen)) {
-      // this.animateClose();
+      this.animateClose();
       if(this.props.backButtonClose && Platform.OS === 'android') BackButton.removeEventListener('hardwareBackPress', this.onBackPress)
     }
   }
