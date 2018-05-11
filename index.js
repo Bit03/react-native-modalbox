@@ -474,7 +474,7 @@ var ModalBox = createReactClass({
   close: function() {
     if (this.props.isDisabled) return;
     if (!this.state.isAnimateClose && (this.state.isOpen || this.state.isAnimateOpen)) {
-      this.animateClose();
+      // this.animateClose();
       if(this.props.backButtonClose && Platform.OS === 'android') BackButton.removeEventListener('hardwareBackPress', this.onBackPress)
     }
   }
